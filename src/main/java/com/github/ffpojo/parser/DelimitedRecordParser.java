@@ -31,11 +31,14 @@ class DelimitedRecordParser extends BaseRecordParser implements RecordParser {
 
         List<DelimitedFieldDescriptor> delimitedFieldDescriptors = getRecordDescriptor().getFieldDescriptors();
         String[] textTokens = text.split(RegexUtil.escapeRegexMetacharacters(getRecordDescriptor().getDelimiter()));
-        // 处理最后一个字段为空的情况
-        if (delimitedFieldDescriptors.size() == textTokens.length + 1) {
+
+        // 处理字段为空的情况，补全
+        if (delimitedFieldDescriptors.size() > textTokens.length) {
             List<String> tempTextTokens = new ArrayList<String>(textTokens.length);
             Collections.addAll(tempTextTokens, textTokens);
-            tempTextTokens.add("");
+            for (int i = 0; i < delimitedFieldDescriptors.size() - textTokens.length; i++) {
+                tempTextTokens.add("");
+            }
             textTokens = tempTextTokens.toArray(new String[0]);
         }
 

@@ -5,7 +5,7 @@
 
     <groupId>com.github.ffpojo</groupId>
     <artifactId>ffpojo-fix</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.0-2022.01.12</version>
 
     <name>FFPOJO :: Core Project</name>
     <description>FFPOJO core project.</description>
